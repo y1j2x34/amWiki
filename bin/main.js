@@ -83,7 +83,7 @@ co(function*() {
                 break;
             }
             mngWiki.linkWikis(wikis);
-            mngWiki.addWiki(root);
+            var wikiId = mngWiki.addWiki(root);
             const port = parameters[0];
             //有输入端口且合法
             if (typeof port !== 'undefined' && /^\d+$/.test(port)) {
@@ -93,6 +93,7 @@ co(function*() {
             else {
                 localServer.run(wikis);
             }
+            console.info(`首页 ${localServer._server._url}wiki${wikiId}/index.html`);
             break;
         //本地浏览文档
         case 'browser':
@@ -134,6 +135,14 @@ co(function*() {
         case 'version':
         case '-v':
             printFn.ver(mainPath);
+            break;
+        case 'id':
+        case '-i':
+            if (!root) {
+                console.error('非amWiki项目文件夹，无法查看id！');
+                break;
+            }
+            console.info(mngWiki.createWikiId(root));
             break;
         //显示帮助
         case 'help':

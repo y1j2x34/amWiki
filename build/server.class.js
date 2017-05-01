@@ -36,10 +36,11 @@ class Server {
         this._wikis = wikis;
         this._port = port;
         this._localIP = this.getLocalIP();
+        this._url = `http://${this._localIP}:${this._port}/`;
         this.server = http.createServer((req, res) => {
             this.parse(req, res);
         }).listen(this._port);
-        console.info('Server running at http://' + this._localIP + ':' + this._port + '/');
+        console.info('Server running at ' + this._url);
     }
 
     //404未找到页面

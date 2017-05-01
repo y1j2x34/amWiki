@@ -18,6 +18,7 @@ module.exports = {
      * 添加一个文库到记录
      * @param {string} root - 文库根目录
      * @param {number} [id] - 文库的计算id
+     * @return {string} - 文库编号
      */
     addWiki: function (root, id = this.createWikiId(root)) {
         if (typeof root === 'undefined') {
@@ -41,6 +42,7 @@ module.exports = {
             path: root + 'library/',
             deprecated: false
         };
+        return id;
     },
     /**
      * 计算文库id

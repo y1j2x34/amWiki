@@ -66,6 +66,7 @@ const helpWords = `
   -h, help        显示帮助
   -v, version     显示版本号
   -c, create      创建 wiki
+  -i, id          显示文库id
   -u, update      更新 wiki 数据
                   默认全部项目更新，添加参数可以指定部分更新
                       [nav]  仅更新导航
@@ -84,7 +85,7 @@ const helpWords = `
                   第二位参数，必需，指定导出路径
                       d:/your-path  导出路径
                   ${clc(90, '(eg: amwiki export github-wiki d:/your-path)')}
-                  
+
 更多文档：
   https://tevinli.github.io/amWiki/index.html`;
 
@@ -98,7 +99,7 @@ const vesWords = `
  wwwwwww  ww   ww   ww   kk  kkkk  kk    kk  kk kk     kk
 ww    ww  ww   ww   ww   kk kk  kk kk    kk  kkkk      kk
  wwwwwww  ww   ww   ww    kk      kk     kk  kk  kk  kk
- 
+
 `.replace(/w/g, `${clc(32, '$')}`).replace(/k/g, `${clc(36, '$')}`);
 
 module.exports = {
