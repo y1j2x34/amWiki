@@ -72,7 +72,8 @@ module.exports = {
                         r += makeSubMark(childName, child, parentPath+"/"+folderName, tab+"    ");
                     }else if(checkFileName(childName, path)){
                         var name = title(childName);
-                        r += `\n${tab}    - [${name}](?file=${parentPath}/${folderName}/${childName} "${name}")`;
+                        var fileNameWithoutExt = childName.split(".md")[0];
+                        r += `\n${tab}    - [${name}](?file=${parentPath}/${folderName}/${fileNameWithoutExt} "${name}")`;
                     }
                 }
                 return r;
