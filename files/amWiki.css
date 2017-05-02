@@ -160,7 +160,7 @@ body[onselectstart]{cursor:pointer;-moz-user-select:none;-webkit-user-select:non
 .scroller .scrollbar.scrollbar-y:active i{left:0;width:10px;}
 /* scrollbar-x */
 .scroller[data-x-rolling="true"] .scroller-inner.on{overflow-x:scroll;}
-.scroller[data-x-rolling="true"] .scroller-content{display:inline-block;position:relative;white-space:nowrap;padding-bottom:10px;}
+.scroller[data-x-rolling="true"] .scroller-content{display:block;position:relative;white-space:nowrap;padding-bottom:10px;}
 .scroller .scrollbar.scrollbar-x{bottom:0;left:0;width:100%;height:10px;padding-right:10px;}
 .scroller .scrollbar.scrollbar-x div{width:100%;height:100%;}
 .scroller .scrollbar.scrollbar-x i{bottom:0;top:4px;height:3px;width:100%;}
@@ -194,7 +194,7 @@ body[onselectstart]{cursor:pointer;-moz-user-select:none;-webkit-user-select:non
 	.header .menu-icon.close svg{top:14px;left:10px;width:18px;height:18px;}
 
 	.container{position:relative;margin:50px auto 0;background:#fff;border:none;}
-	
+
 	/* ---------- menu ---------- */
 	.container .nav{display:none;position:fixed;left:0;top:50px;z-index:9999;width:100%;height:100%;padding-bottom:30px;background:rgba(0,0,0,0.92);overflow-y:scroll;}
 	.container .nav.on{display:block;}
@@ -226,11 +226,11 @@ body[onselectstart]{cursor:pointer;-moz-user-select:none;-webkit-user-select:non
     .main-sibling{padding:30px 25px 25px;}
     .main-sibling p{height:22px;}
     .main-sibling a{padding-right:20px;}
-    
+
     /* ---------- contents ---------- */
     aside .contents{bottom:75px;border-radius:50%;}
     aside .contents-list{right:40px;width:255px;max-height:310px;}
-    
+
     /* ---------- backTop ---------- */
     aside .back-top{border-radius:50%;bottom:32px;}
     aside .back-top:hover .back-text{display:none;}

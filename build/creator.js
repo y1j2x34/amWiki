@@ -179,6 +179,8 @@ module.exports = {
             config.testing = config.testing || false;
             //设置自定义颜色
             config.colour = config.colour ? that._clacWikiColour(config.colour) : that._clacWikiColour('#4296eb');
+            // 静态服务器
+            config["static-server"] = config["static-server"] || "/";
             return {
                 options: options,
                 config: config
@@ -208,7 +210,9 @@ module.exports = {
             let indexPage = fs.readFileSync(options.filesPath + 'amWiki.tpl', 'utf-8');
             indexPage = indexPage.replace(/\{\{name\}\}/g, config.name)
                 .replace('{{version}}', config.version)
-                .replace('{{logo}}', config.logo);
+                .replace('{{logo}}', config.logo)
+                .replace(/\{\{static\-server\}\}/g, config["static-server"])
+                ;
             if (config.testing) {
                 const testingTpl = fs.readFileSync(options.filesPath + 'amWiki.testing.tpl', 'utf-8');
                 const testingScript = '<script src="amWiki/js/amWiki.testing.js"></script>';

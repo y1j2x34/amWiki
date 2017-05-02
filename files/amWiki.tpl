@@ -7,9 +7,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <meta name="renderer" content="webkit">
         <title>{{name}}</title>
-        <link rel="stylesheet" type="text/css" href="amWiki/css/markdownbody.github.css" />
-        <link rel="stylesheet" type="text/css" href="amWiki/css/lhjs.github-gist.css" />
-        <link rel="stylesheet" type="text/css" href="amWiki/css/amWiki.css" />
+        <link rel="stylesheet" type="text/css" href="{{static-server}}amWiki/css/markdownbody.github.css" />
+        <link rel="stylesheet" type="text/css" href="{{static-server}}amWiki/css/lhjs.github-gist.css" />
+        <link rel="stylesheet" type="text/css" href="{{static-server}}amWiki/css/amWiki.css" />
     </head>
 
     <body>
@@ -147,19 +147,19 @@
         </footer>
         <!-- js -->
         <div class="hidden">
-            <script type="text/javascript" src="amWiki/js/gbk.js"></script>
-            <script type="text/javascript" src="amWiki/js/jquery-compat-3.1.0.min.js"></script>
-            <script type="text/javascript" src="amWiki/js/marked.min.js"></script>
-            <script type="text/javascript" src="amWiki/js/highlight.min.js"></script>
-            <script type="text/javascript" src="amWiki/js/raphael-min.js"></script>
-            <script type="text/javascript" src="amWiki/js/flowchart.min.js"></script>
-            <script type="text/javascript" src="amWiki/js/amWiki.tools.js"></script>
-            <script type="text/javascript" src="amWiki/js/amWiki.storage.js"></script>
-            <script type="text/javascript" src="amWiki/js/amWiki.search.js"></script>
-            <script type="text/javascript" src="amWiki/js/amWiki.docs.js"></script>
+            <script type="text/javascript" src="{{static-server}}amWiki/js/gbk.js"></script>
+            <script type="text/javascript" src="{{static-server}}amWiki/js/jquery-compat-3.1.0.min.js"></script>
+            <script type="text/javascript" src="{{static-server}}amWiki/js/marked.min.js"></script>
+            <script type="text/javascript" src="{{static-server}}amWiki/js/highlight.min.js"></script>
+            <script type="text/javascript" src="{{static-server}}amWiki/js/raphael-min.js"></script>
+            <script type="text/javascript" src="{{static-server}}amWiki/js/flowchart.min.js"></script>
+            <script type="text/javascript" src="{{static-server}}amWiki/js/amWiki.tools.js"></script>
+            <script type="text/javascript" src="{{static-server}}amWiki/js/amWiki.storage.js"></script>
+            <script type="text/javascript" src="{{static-server}}amWiki/js/amWiki.search.js"></script>
+            <script type="text/javascript" src="{{static-server}}amWiki/js/amWiki.docs.js"></script>
             {{amWiki.testing.js}}
-            <script type="text/javascript" src="amWiki/js/amWiki.scrollbar.js"></script>
-            <script type="text/javascript" src="amWiki/js/amWiki.js"></script>
+            <script type="text/javascript" src="{{static-server}}amWiki/js/amWiki.scrollbar.js"></script>
+            <script type="text/javascript" src="{{static-server}}amWiki/js/amWiki.js"></script>
         </div>
         <!-- svg -->
         <div class="hidden" id="svgSymbols"></div>

@@ -11,7 +11,7 @@ module.exports = {
      * @param {string} path - 文库library文件夹路径
      * @returns {object} 树形数据、文件列表数据、文件夹列表数据
      */
-    readLibraryTree: function (path) {
+    readLibraryTree: function(path){
         if (!/library[\\\/]$/.test(path)) {
             console.warn('The path is not a library.');
             return [];
@@ -19,62 +19,38 @@ module.exports = {
         const tree = {};
         const folders = [];
         const files = [];
-        try {
-            let files1 = fs.readdirSync(path),
-                files2, files3,
-                path2, path3, path4;
-            folders.push(path);
-            //第一层，files1，library直接子级，仅允许为文件夹
-            for (let i = 0; i < files1.length; i++) {
-                path2 = path + files1[i];
-                if (/^\./.test(files1[i])) {
-                    continue;
-                }
-                if (fs.statSync(path2).isDirectory(path2)) {
-                    try {
-                        files2 = fs.readdirSync(path2);
-                        folders.push(path2);
-                        tree[files1[i]] = {};
-                        //第二层，files2，允许为文件夹和文件
-                        for (let j = 0; j < files2.length; j++) {
-                            path3 = path2 + '/' + files2[j];
-                            if (/^\./.test(files2[j])) {
-                                continue;
-                            }
-                            if (fs.statSync(path3).isDirectory(path3)) {
-                                try {
-                                    files3 = fs.readdirSync(path3);
-                                    folders.push(path3);
-                                    tree[files1[i]][files2[j]] = {};
-                                    //第三层，files3，仅允许为文件夹，不再深入
-                                    for (let k = 0; k < files3.length; k++) {
-                                        path4 = path3 + '/' + files3[k];
-                                        if (/^\./.test(files3[k])) {
-                                            continue;
-                                        }
-                                        if (!fs.statSync(path4).isDirectory(path4)) {
-                                            tree[files1[i]][files2[j]][files3[k]] = false;
-                                            files.push(path4);
-                                        }
-                                    }
-                                } catch (err) {
-                                    console.error(err);
-                                    return [];
-                                }
-                            } else {
-                                tree[files1[i]][files2[j]] = false;
-                                files.push(path3);
-                            }
-                        }
-                    } catch (err) {
-                        console.error(err);
-                        return [];
-                    }
-                }
+        const limitedLevel = 4;
+        iterateDir(path, tree, 1);
+
+        function iterateDir(path, tree, level){
+            if(level > limitedLevel){
+                console.warn("文件夹层数超过限制的"+limitedLevel+"层， 已忽略：" + path);
+                return;
             }
-        } catch (err) {
-            console.error(err);
-            return [];
+            try{
+                var dir = fs.readdirSync(path);
+                folders.push(path);
+
+                dir.forEach(name => {
+                    var absPath = path + '/' + name;
+                    if(/^\./.test(path)){
+                        return;
+                    }
+                    try{
+                        if(fs.statSync(absPath).isDirectory(absPath)){
+                            tree[name] = {};
+                            iterateDir(absPath, tree[name], level+1);
+                        }else if(level > 1){
+                            tree[name] = false;
+                            files.push(absPath);
+                        }
+                    }catch(e){
+                        console.error(e);
+                    }
+                });
+            }catch(e){
+                console.error(e);
+            }
         }
         return [tree, files, folders];
     },
